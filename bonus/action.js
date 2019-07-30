@@ -8,12 +8,7 @@
 var casnum, livello, scelta;
 var myArray = [];
 
-  for (var i = 0; i < 16; i++){
-    casnum = Math.floor((Math.random() * livello) + 1);
-    myArray.push(casnum);
-  }
 
-console.log(myArray);
 
 scelta = parseInt(prompt("Scegli la dificoltà del gioco tra 1 e 3"));
 
@@ -25,24 +20,30 @@ if (scelta == 1){
   livello = 50;
 }
 
+for (var i = 0; i < 16; i++){
+  casnum = Math.floor((Math.random() * livello) + 1);
+  myArray.push(casnum);
+}
+
+console.log(myArray);
 
 var messaggio;
 var i = 0;
 var trovato = false;
 while (i < 16 && trovato == false) {
   console.log("primo while" + i);
-  var numUtente = parseInt(prompt("Inserisci un numero da 1 a 100"));
+  var numUtente = parseInt(prompt("Inserisci un numero da 1 a " + livello));
   console.log(numUtente < 1);
   console.log(numUtente > livello);
   console.log(isNaN(numUtente));
   console.log(numUtente < 1 || numUtente > livello || isNaN(numUtente));
   while (numUtente < 1 || numUtente > livello || isNaN(numUtente)) {
-    messaggio = "Il numero deve essere compreso tra 1 e 100";
+    messaggio = "Il numero deve essere compreso tra 1 e " + livello;
     if (isNaN(numUtente)) {
     messaggio = "Dev'essere un numero";
     }
     alert(messaggio);
-    numUtente = parseInt(prompt("Inserisci un numero da 1 a 100"));
+    numUtente = parseInt(prompt("Inserisci un numero da 1 a " + livello));
   }
   if (myArray.includes(numUtente)){
     console.log("variabile trovato" + trovato);
